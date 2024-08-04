@@ -1,0 +1,594 @@
+
+<head>
+  <link href='//fonts.googleapis.com/css?family=Roboto:100,400,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">  
+</head>
+
+<style>
+  body {
+    overflow: auto;
+  }  
+  
+  img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+  }  
+  
+  h1,
+  form,
+  .message,
+  .logout {
+    margin: 0 auto;
+    max-width: 400px;
+    width: 90vw;
+  }
+
+  .logout {
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  label,
+  button {
+    display: block;
+    font-size: .5rem;
+    font-variant: small-caps;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+  }
+
+  label {
+    margin: 0.5rem 0 0;
+    text-transform: lowercase;
+  }
+
+  input {
+    border: 1px solid var(--text-muted);
+    border-radius: 0.25rem;
+    display: block;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+  }
+
+  button {
+    background: var(--pink);
+    border: 0;
+    border-radius: 0.25rem;
+    color: var(--white);
+    font-family: var(--font-family);
+    margin: 1rem 0 0;
+    padding: 0.5rem 3rem;
+    text-transform: uppercase;
+  }
+
+  .message {
+    background: var(--yellow);
+    border-radius: 0.25rem;
+    font-family: monospace;
+    padding: 1rem;
+  }
+
+  .message:empty {
+    display: none;
+  }
+  
+ 
+.quiz-window {
+  left:0; right:0;
+  top: 70px;
+  margin: auto;
+  border-radius: 4px;
+  background: #fff;
+  overflow: hidden;
+  display: grid;
+  justify-content: space-around;
+}
+
+.quiz-window-header {
+  padding: 20px 15px;
+  text-align:center;
+  position: relative;
+}
+.quiz-window-title {
+  font-size: 26px;
+}
+.quiz-window-close {
+  position: absolute;
+  top:20px;
+  right:20px;
+  padding:0;
+  background:none;
+  border:0;
+  width: 30px;
+  height: 30px;
+  font-size: 60px;
+  font-weight: 100;
+  line-height: 24px;
+  color: #777;
+  cursor:pointer;
+}
+.quiz-window-body {
+  background-color: #f9f9f9;
+}
+.guiz-members-row {
+  margin:0;
+  list-style: none;
+  padding: 0;
+  margin-top: 2%;
+  width: 370px;
+}
+.guiz-members-row:after {
+  content: '';
+  display: table;
+  clear:both;
+}
+.guiz-members-row-even {
+  background-color: #fff;
+}
+.guiz-members-row li {
+  display:inline-block;
+  vertical-align: top;
+  float: left;
+}
+.guiz-members-header {
+  text-align: center;
+  padding: 20px 40px;
+}
+.guiz-members-star, .guiz-members-track, .guiz-members-time,
+.guiz-members-header-star, .guiz-members-header-track, .guiz-members-header-time{
+  min-width: 54px;
+  
+  text-align: center;
+}
+.guiz-members-title {
+  min-width: 160px;
+  font-size: 18px;
+  font-weight: normal;
+  padding-top: 3px;
+  margin-right: 4%;
+  margin-left: 4%;
+}
+.guiz-members-header-title {
+  width: 40%;
+  min-width: 160px;
+}
+.guiz-members-subtitle {
+  color: #858585;
+  font-size: 14px;
+  font-weight: 300;
+}
+.guiz-members-track, .guiz-members-time {
+  width: 22%;
+  min-width: 80px;
+  font-size: 18px;
+  line-height: 45px
+}
+.guiz-members-header-track, .guiz-members-header-time {
+  width: 22%;
+  min-width: 80px;
+}
+.guiz-members-track .null, .guiz-members-time .null {
+  color:#bababa;
+}
+.star {
+  display:block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #bdc2c1;
+  background: #d6d6d6;  
+}
+.goldstar {
+  border-color: #4c8193;
+  background: #14b0bf;  
+}
+.silverstar {
+  border-color: #557e3a;
+  background: #66931f;  
+}
+.bronzestar {
+  border-color: #998247;
+  background: #aa984b;  
+}
+.rhodiumstar {
+  border-color: #743a7f;
+  background: #a0409d;
+}
+.platinumstar {
+  border-color: #10393b;
+  background: #2b5770;
+}
+
+.guiz-members-buttons {
+  background: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+.guiz-members-but-back {
+  display:inline-block;
+  background: none;
+  border: 1px solid #61a3e5;
+  border-radius: 21px;
+  padding: 7px 40px 7px 20px;
+  color: #61a3e5;
+  font-size: 17px;
+  cursor:pointer;
+  transition: all .3s ease;
+}
+
+.guiz-members-but-back:hover {
+  background: #61a3e5;
+  color: #fff;
+}
+
+.guiz-members-but-back i {
+  font-size: 26px;
+  line-height: 17px;
+  margin-right: 20px;
+  position: relative;
+  top: 2px;
+}  
+
+label .menu {
+  position: absolute;
+  right: -100px;
+  top: -100px;
+  z-index: 100;
+  width: 200px;
+  height: 200px;
+  background: #FFF;
+  border-radius: 50% 50% 50% 50%;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  box-shadow: 0 0 0 0 #FFF, 0 0 0 0 #FFF;
+  cursor: pointer;
+  
+}
+
+label input:checked + .menu + ul { opacity: 1; }
+
+label ul {
+  z-index: 200;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  -webkit-transition: .25s 0s ease-in-out;
+  transition: .25s 0s ease-in-out;
+}
+
+label a {
+  margin-bottom: 1em;
+  display: block;
+  color: #f38630;
+  text-decoration: none;
+  
+}
+
+#loading {
+  margin-left: 40%;
+}
+
+h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+
+  button {
+    padding: 0.5rem 1rem;
+  }
+
+  .guiz-members-title {
+      max-width: 10px;
+      word-break: break-word;
+  }
+      
+  main {
+    margin-right: 0;
+    width: auto;
+    margin-left: 15px;
+  }
+  
+  body {
+    width: fit-content;
+  }
+  
+  .guiz-members-row { 
+    width: 100vw;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+</style>
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Inconsolata:700');
+  
+
+.container {
+	 margin: auto;
+	 margin-top: 25px;
+	 top: 70px;
+	 left: 0;
+	 right: 0;
+	 bottom: 0;
+	 width: 300px;
+	 height: 100px;
+}
+ .container .search {
+	 position: absolute;
+	 margin: auto;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 width: 80px;
+	 height: 80px;
+	 background: orange;
+	 border-radius: 50%;
+	 transition: all 1s;
+	 z-index: 4;
+	 box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+}
+ .container .search:hover {
+	 cursor: pointer;
+}
+ .container .search::before {
+	 content: "";
+	 position: absolute;
+	 margin: auto;
+	 top: 22px;
+	 right: 0;
+	 bottom: 0;
+	 left: 22px;
+	 width: 12px;
+	 height: 2px;
+	 background: white;
+	 transform: rotate(45deg);
+	 transition: all 0.5s;
+}
+ .container .search::after {
+	 content: "";
+	 position: absolute;
+	 margin: auto;
+	 top: -5px;
+	 right: 0;
+	 bottom: 0;
+	 left: -5px;
+	 width: 25px;
+	 height: 25px;
+	 border-radius: 50%;
+	 border: 2px solid white;
+	 transition: all 0.5s;
+}
+ .container input {
+	 font-family: 'Inconsolata', monospace;
+	 position: absolute;
+	 margin: auto;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 width: 50px;
+	 height: 50px;
+	 outline: none;
+	 border: none;
+	 background: orange;
+	 color: white;
+	 text-shadow: 0 0 10px orange;
+	 padding: 0 80px 0 20px;
+	 border-radius: 30px;
+	 box-shadow: 0 0 25px 0 orange, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+	 transition: all 1s;
+	 opacity: 0;
+	 z-index: 5;
+	 font-weight: bolder;
+	 letter-spacing: 0.1em;
+}
+ .container input:hover {
+	 cursor: pointer;
+}
+ .container input:focus {
+	 width: 300px;
+	 opacity: 1;
+	 cursor: text;
+}
+ .container input:focus ~ .search {
+	 right: -250px;
+	 background: #151515;
+	 z-index: 6;
+}
+ .container input:focus ~ .search::before {
+	 top: 0;
+	 left: 0;
+	 width: 25px;
+}
+ .container input:focus ~ .search::after {
+	 top: 0;
+	 left: 0;
+	 width: 25px;
+	 height: 2px;
+	 border: none;
+	 background: white;
+	 border-radius: 0%;
+	 transform: rotate(-45deg);
+}
+ .container input::placeholder {
+	 color: white;
+	 opacity: 0.5;
+	 font-weight: bolder;
+}
+ 
+</style>
+
+
+<div class="quiz-window">
+  <div class="quiz-window-header">
+    <div class="quiz-window-title">Your Members</div>
+    <div class="container">
+      <input type="text" id="search-btn" placeholder="Search...">
+      <div class="search"></div>
+    </div>
+    <div class="message"></div>
+  </div>
+  <div class="quiz-window-body">
+    <div class="gui-window-members">
+  
+    </div>
+    <div class="guiz-members-buttons">
+      <button id="back-btn" class="guiz-members-but-back"><i class="fa fa-angle-left"></i> Back</button>
+      <button id="next-btn" class="guiz-members-but-back"><i class="fa fa-angle-right"></i> Next</button>
+    </div>
+    
+  </div>
+</div>
+<script
+  type="text/javascript"
+  src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+></script>
+
+
+<script>
+    const searchBtn = document.querySelector('#search-btn');
+    const backBtn = document.querySelector('#back-btn');
+    const nextBtn = document.querySelector('#next-btn');
+    let total = [];
+    let current = 0;
+		
+    const fragment = (member) => {
+        const { 
+          id,
+          name, 
+          end_date,
+          image_url 
+        } = member;
+        
+        const converted_date = new Date(end_date).toDateString();
+        return `<ul class="guiz-members-row guiz-members-row-even">
+          <li class="guiz-members-star"><span class="star goldstar">
+            <img src="${image_url}"/>
+          </span></li>
+          <li class="guiz-members-title">${name}
+            <div class="guiz-members-subtitle">Renewal Date: ${end_date}</div>
+          <li class="guiz-members-track">
+            <a href="/profile?id=${id}">
+              <button>View Profile</button>        
+            </a>
+          </li>
+          </li>
+        </ul>`
+    }    
+
+		function addFragment() {
+		    if(!total.length) {
+		        return `
+		          <p>No members found!</p>
+		        `
+		    }
+        return total.slice(current, current + 5).join('');      		
+		}
+		    
+    nextBtn.addEventListener('click', () => {
+        if(current + 5 >= total.length) return;
+        current += 5;
+        document.querySelectorAll('.guiz-members-row').forEach(el => el.remove());
+        const element = document.createElement('div');
+        element.innerHTML = addFragment(); 
+        const parent = document.querySelector('.gui-window-members');
+        parent.appendChild(element);
+    });
+    
+    backBtn.addEventListener('click', () => {
+        if(current - 5 < 0) return;
+        document.querySelectorAll('.guiz-members-row').forEach(el => el.remove());       
+        current -= 5;
+        const element = document.createElement('div');
+        element.innerHTML = addFragment(); 
+        const parent = document.querySelector('.gui-window-members');
+        parent.appendChild(element);
+    });
+    
+    searchBtn.addEventListener('keypress', e => {
+        if(e.key == 'Enter') {
+            if(!e.target.value) return;
+            current = 0;
+            document.querySelectorAll('.guiz-members-row').forEach(el => el.remove());            
+            fetchMembers(e.target.value);
+            e.target.value = '';
+        }
+    });
+    
+		async function handleIdentityEvent(user) {
+			if (user && user.token) {
+          const main = document.querySelector('main');
+          main.style.opacity = 'unset';
+          const { access_token } = user.token;
+          fetch('/.netlify/functions/members', {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+            }
+          }).then(async (response) => {
+            if(response.status === 200) {
+                const members = await response.json();
+                total = members.map(fragment);
+                const element = document.createElement('div');
+                element.innerHTML = addFragment(); 
+                const parent = document.querySelector('.gui-window-members');
+                document.querySelector('#loading').remove();
+                parent.appendChild(element);
+            } else {
+                document.querySelector(
+                  '.message',
+                ).innerText = `Response: ${response.status} — ${response.statusText}`;            
+            }
+          });
+          
+				  return;
+			}
+
+    
+			window.location.pathname = '/login/';
+		}
+   
+		function fetchMembers(name) {
+					const { access_token } = netlifyIdentity.currentUser().token;
+          fetch(`/.netlify/functions/member-by-name?name=${name}`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${access_token}`,
+            }
+          }).then(async (response) => {
+            if(response.status === 200) {
+                const result = await response.json();
+                const { members }  = result;
+                const element = document.createElement('div');
+                total = members.map(fragment);
+                element.innerHTML = addFragment(); 
+                const parent = document.querySelector('.gui-window-members');
+                parent.appendChild(element);
+            } else {
+                document.querySelector(
+                  '.message',
+                ).innerText = `Response: ${response.status} — ${response.statusText}`;            
+            }
+          });		
+		}
+	  window.netlifyIdentity.on('init', handleIdentityEvent);
+</script>

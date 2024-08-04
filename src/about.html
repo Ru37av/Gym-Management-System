@@ -1,0 +1,86 @@
+<div class="member"></div>
+<hr>
+<h4 style="text-align: center;">एकध्येय मित्र मंडळ संचलित,</h4> 
+<h4 style="text-align: center;">मोरवाडी हेल्थ क्लब 🏋️</h4>
+<h3 style="text-align: center;">शरीर हीच खरी संपत्ती !</h3> 
+<p style="text-align: center;">
+  वेळ: पहाटे ५ ते सायं. ९
+  विजयनगर बस स्टॉप समोर, मोरवाडी गाव, 
+  नवीन नाशिक.
+</p> 
+
+<h4 style="text-align: center;">साबळे सर ( प्रशिक्षक ) मो. - <a href="tel:+919325858787">९३२५८५८७८७</a></h4> 
+<hr>
+<h3 style="text-align: center;">नियम व अटी</h3>
+<p>• मासिक फी महिन्याच्या १० ता पर्यंत पोच करावी.</p>
+<p>• व्यायाम शाळेत कोणतेही अलंकार आणू नयेत.</p>
+<p>• कोणतीही तक्रार असल्यास व्यवस्थापकांशी संपर्क साधावा.</p>
+<p>• तीन दिवसापेक्षा जास्त दिवस गैरहजर राहायचे असल्यास कळवावे नाहीतर प्रवेश रद्द समजावा.</p>
+<p>• गैरवर्तन करणाऱ्यास व्यायाम शाळेतून काढून टाकण्यात येईल.</p>
+<p>• शिवीगाळ व मस्ती करू नये.</p>
+<p>• आपला व्यायाम झाल्यानंतर साहित्य व्यवस्थित जागेवर ठेवावे.</p>
+<p>• एकदा प्रवेश झाल्यानंतर कोणत्याही सबबीवर फी चे पैसे परत मिळणार नाहीत.</p>
+<p>• प्रवेश हस्तांतणीय करता येणार नाही.</p>
+
+<h3 style="text-align: center;">Terms and conditions</h3>
+<p>• The monthly fee should be paid by the 10th of the month.</p>
+<p>• Do not bring any ornaments to the gym.</p>
+<p>• Gym trainer should be contacted if there are any complaints.</p>
+<p>• If you want to be absent for more than three days, you should report it or else the admission will be considered canceled.</p>
+<p>• The abuser will be expelled from the gym.</p>
+<p>• Don't abuse other members of the gym.</p>
+<p>• Keep the gym material in place after your exercise.</p>
+<p>• Once admitted, the fee will not be refunded under any circumstances.</p>
+<p>• Gym membership is not transferable.</p>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+		const id = urlParams.get('id') || -1;
+    const main = document.querySelector('main');
+
+		if(id !== -1) {
+        fetch(`/.netlify/functions/member-by-id?id=${id}`, {
+          method: 'GET'
+        }).then(async (response) => {
+          const element = document.querySelector('.member');
+          document.querySelector('#loading').remove();
+          main.style.opacity = 'unset';
+        
+          if(response.status === 200) {
+              const result = await response.json();
+              const [ member ] = result.members;
+              debugger;
+              if(!member) {
+                element.innerHTML = addCancelledFragment();            
+              } else {
+                element.innerHTML = addFragment(member); 
+              }
+          }
+        });
+        
+        function addFragment(member) {
+            const { 
+              name, 
+              end_date,
+              pending_fee 
+            } = member;
+          
+            const converted_date = new Date(end_date).toDateString();
+            return `
+              Name: <h3>${name}</h3>
+              Renewal Date: <h3>${converted_date}</h3>        
+              Pending Fee: <h3>${pending_fee}₹</h3>        
+            `
+        }
+        
+        function addCancelledFragment() {
+            return `
+              <h3 style="text-align: center;">Your gym membership has been cancelled!</h3>
+            `                  
+        }
+		} else {
+        document.querySelector('#loading').remove();
+				main.style.opacity = 'unset';
+		}
+
+</script>

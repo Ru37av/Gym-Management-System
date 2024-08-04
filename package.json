@@ -1,0 +1,24 @@
+{
+  "name": "frontendmasters-serverless",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "author": "Jason Lengstorf <jason@lengstorf.com>",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.11.0"
+  },
+  "dependencies": {
+    "@netlify/functions": "^1.0.0",
+    "axios": "^0.27.2",
+    "moment": "^2.29.3",
+    "node-fetch": "^2.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlengstorf/frontendmasters-serverless.git"
+  },
+  "license": "CC-BY-NC-SA-4.0",
+  "version": "1.0.0",
+  "private": true
+}

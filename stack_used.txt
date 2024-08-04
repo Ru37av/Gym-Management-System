@@ -1,0 +1,25 @@
+RupeshAvhad@123
+
+SELECT * FROM members;
+
+
+hasura - connects with relational db & provides graphql interface
+
+heroku - cloud database
+
+eleventy - js framework 
+
+npm - tool to install third-party libraries 
+
+netlify - hosting provider 
+	* netlify-functions - provides serverless functions
+	* netlify-identity - authentication & authorization
+
+image hosting - cloudinary 
+
+run locally: npm run dev
+
+deploy to prod: netlify deploy --prod
+
+
+https://cors-anywhere.herokuapp.com/http://morwadi-health-club.netlify.com/ --> notification link

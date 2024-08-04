@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morwadi Health Club</title>
+    <link rel="stylesheet" href="https://use.typekit.net/jwa3agu.css" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="icon" type="image/x-icon" href="/images/morwadi-health-club.svg">
+        
+    <style>
+         main {
+            opacity: 0;
+         }
+         
+         #loading {
+             width: 8rem;
+             height: 11rem;
+             margin-left: 40%;
+         }
+    </style>
+  </head>
+  <body>
+    <style>
+
+  body {
+    overflow: none;
+  }
+  .lwj-demo-header {
+    background: var(--black);
+    font-family: var(--font-family);
+    position: relative;
+  }
+
+  .lwj-demo-header .logo-wrapper {
+    align-items: center;
+    display: flex;
+    height: 56px;
+    justify-content: flex-start;
+    padding: 0 1rem;
+    position: relative;
+    width: 100vw;
+  }
+
+  .lwj-demo-header .logo-wrapper::after {
+    background-image: linear-gradient(
+      255deg,
+      var(--black) 0%,
+      var(--black-transparent) 30%
+    );
+    bottom: 0;
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    z-index: 10;
+  }
+
+  .lwj-demo-header .logo {
+    display: block;
+    height: auto;
+    position: relative;
+    transform: rotate(-3deg);
+    transition: transform 250ms ease-out;
+    width: 55px;
+    z-index: 15;
+  }
+
+  .lwj-demo-header .logo::after {
+    background: var(--white);
+    border: 1px solid var(--dark-gray);
+    border-radius: 0.25rem;
+    color: var(--dark-gray);
+    content: 'Morwadi Health Club';
+    display: block;
+    left: -0.5rem;
+    opacity: 0;
+    padding: 0.5rem;
+    position: absolute;
+    text-align: center;
+    top: 98%;
+    transition: opacity 300ms linear;
+    width: 230px;
+  }
+
+  .lwj-demo-header .logo:active,
+  .lwj-demo-header .logo:focus,
+  .lwj-demo-header .logo:hover {
+    transform: rotate(0deg);
+  }
+
+  .lwj-demo-header .logo:active::after,
+  .lwj-demo-header .logo:focus::after,
+  .lwj-demo-header .logo:hover::after {
+    opacity: 1;
+  }
+
+  .lwj-demo-header .logo img {
+    display: block;
+    width: 100%;
+  }
+
+  .lwj-demo-header .home-link {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 900;
+    margin-left: 0.75rem;
+    position: relative;
+    text-decoration: none;
+    z-index: 15;
+  }
+
+  .lwj-demo-header #canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .lwj-demo-header .top-bar {
+    animation: gradient-roll 20s linear infinite alternate;
+    background-image: var(--lwj-gradient);
+    background-size: 200%;
+    border-bottom: 0.5px solid var(--light-gray);
+    height: 9px;
+    position: relative;
+    top: 100%;
+    width: 100vw;
+    z-index: 5;
+  }
+
+  .lwj-demo-header .top-bar::before,
+  .lwj-demo-header .top-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100vw;
+  }
+
+  .lwj-demo-header .top-bar::before {
+    bottom: 1px;
+    height: 0.5px;
+    background-color: var(--light-gray);
+  }
+
+  .lwj-demo-header .top-bar::after {
+    bottom: 0;
+    height: 1px;
+    background-color: var(--black);
+  }
+  
+  
+</style>
+
+<header class="lwj-demo-header">
+  <div class="logo-wrapper">
+    <canvas id="canvas" width="300" height="56"></canvas>
+    <a href="#" class="logo"
+       
+      ><img src="/images/morwadi-health-club.svg" alt="Morwadi Health Club"
+    /></a>
+    <a href="/" rel="home" class="home-link">
+      Morwadi Health Club
+    </a>
+  </div>
+
+  <div class="top-bar"></div>
+</header>
+
+<script type="module">
+  import { startAnimation } from '/js/dots.js';
+
+  startAnimation();
+</script>
+
+    <main>
+<svg id="loading" version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+      <circle fill="orange" stroke="none" cx="6" cy="50" r="6">
+        <animateTransform 
+           attributeName="transform" 
+           dur="1s" 
+           type="translate" 
+           values="0 15 ; 0 -15; 0 15" 
+           repeatCount="indefinite" 
+           begin="0.1"/>
+      </circle>
+      <circle fill="orange" stroke="none" cx="30" cy="50" r="6">
+        <animateTransform 
+           attributeName="transform" 
+           dur="1s" 
+           type="translate" 
+           values="0 10 ; 0 -10; 0 10" 
+           repeatCount="indefinite" 
+           begin="0.2"/>
+      </circle>
+      <circle fill="orange" stroke="none" cx="54" cy="50" r="6">
+        <animateTransform 
+           attributeName="transform" 
+           dur="1s" 
+           type="translate" 
+           values="0 5 ; 0 -5; 0 5" 
+           repeatCount="indefinite" 
+           begin="0.3"/>
+      </circle>
+    </svg>    
+      <div class="member"></div>
+<hr>
+<h4 style="text-align: center;">एकध्येय मित्र मंडळ संचलित,</h4> 
+<h4 style="text-align: center;">मोरवाडी हेल्थ क्लब 🏋️</h4>
+<h3 style="text-align: center;">शरीर हीच खरी संपत्ती !</h3> 
+<p style="text-align: center;">
+  वेळ: पहाटे ५ ते सायं. ९
+  विजयनगर बस स्टॉप समोर, मोरवाडी गाव, 
+  नवीन नाशिक.
+</p> 
+
+<h4 style="text-align: center;">साबळे सर ( प्रशिक्षक ) मो. - <a href="tel:+919325858787">९३२५८५८७८७</a></h4> 
+<hr>
+<h3 style="text-align: center;">नियम व अटी</h3>
+<p>• मासिक फी महिन्याच्या १० ता पर्यंत पोच करावी.</p>
+<p>• व्यायाम शाळेत कोणतेही अलंकार आणू नयेत.</p>
+<p>• कोणतीही तक्रार असल्यास व्यवस्थापकांशी संपर्क साधावा.</p>
+<p>• तीन दिवसापेक्षा जास्त दिवस गैरहजर राहायचे असल्यास कळवावे नाहीतर प्रवेश रद्द समजावा.</p>
+<p>• गैरवर्तन करणाऱ्यास व्यायाम शाळेतून काढून टाकण्यात येईल.</p>
+<p>• शिवीगाळ व मस्ती करू नये.</p>
+<p>• आपला व्यायाम झाल्यानंतर साहित्य व्यवस्थित जागेवर ठेवावे.</p>
+<p>• एकदा प्रवेश झाल्यानंतर कोणत्याही सबबीवर फी चे पैसे परत मिळणार नाहीत.</p>
+<p>• प्रवेश हस्तांतणीय करता येणार नाही.</p>
+
+<h3 style="text-align: center;">Terms and conditions</h3>
+<p>• The monthly fee should be paid by the 10th of the month.</p>
+<p>• Do not bring any ornaments to the gym.</p>
+<p>• Gym trainer should be contacted if there are any complaints.</p>
+<p>• If you want to be absent for more than three days, you should report it or else the admission will be considered canceled.</p>
+<p>• The abuser will be expelled from the gym.</p>
+<p>• Don't abuse other members of the gym.</p>
+<p>• Keep the gym material in place after your exercise.</p>
+<p>• Once admitted, the fee will not be refunded under any circumstances.</p>
+<p>• Gym membership is not transferable.</p>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+		const id = urlParams.get('id') || -1;
+    const main = document.querySelector('main');
+
+		if(id !== -1) {
+        fetch(`/.netlify/functions/member-by-id?id=${id}`, {
+          method: 'GET'
+        }).then(async (response) => {
+          const element = document.querySelector('.member');
+          document.querySelector('#loading').remove();
+          main.style.opacity = 'unset';
+        
+          if(response.status === 200) {
+              const result = await response.json();
+              const [ member ] = result.members;
+              debugger;
+              if(!member) {
+                element.innerHTML = addCancelledFragment();            
+              } else {
+                element.innerHTML = addFragment(member); 
+              }
+          }
+        });
+        
+        function addFragment(member) {
+            const { 
+              name, 
+              end_date,
+              pending_fee 
+            } = member;
+          
+            const converted_date = new Date(end_date).toDateString();
+            return `
+              Name: <h3>${name}</h3>
+              Renewal Date: <h3>${converted_date}</h3>        
+              Pending Fee: <h3>${pending_fee}₹</h3>        
+            `
+        }
+        
+        function addCancelledFragment() {
+            return `
+              <h3 style="text-align: center;">Your gym membership has been cancelled!</h3>
+            `                  
+        }
+		} else {
+        document.querySelector('#loading').remove();
+				main.style.opacity = 'unset';
+		}
+
+</script>
+    </main>
+
+    <style>
+  .lwj-demo-footer {
+    background: var(--black);
+    color: var(--light-gray);
+    font-family: var(--font-family);
+    padding: 1rem 5vw;
+    position: relative;
+    text-align: center;
+  }
+
+  .lwj-demo-footer a {
+    color: inherit;
+    display: block;
+    font-size: 0.75rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    text-decoration: none;
+  }
+
+  .lwj-demo-footer a:active,
+  .lwj-demo-footer a:focus,
+  .lwj-demo-footer a:hover {
+    color: var(--pink-text);
+  }
+
+  .lwj-demo-footer .bottom-bar {
+    animation: gradient-roll 20s linear infinite alternate;
+    background-image: var(--lwj-gradient);
+    background-size: 200%;
+    border-bottom: 0.5px solid var(--light-gray);
+    bottom: 100%;
+    height: 6px;
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    z-index: 5;
+  }
+
+  .lwj-demo-footer .bottom-bar::before,
+  .lwj-demo-footer .bottom-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100vw;
+  }
+
+  .lwj-demo-footer .bottom-bar::before {
+    top: 1px;
+    height: 0.5px;
+    background-color: var(--light-gray);
+  }
+
+  .lwj-demo-footer .bottom-bar::after {
+    top: 0;
+    height: 1px;
+    background-color: var(--black);
+  }
+
+  @media (min-width: 770px) {
+    .lwj-demo-footer {
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+
+    .lwj-demo-footer a {
+      display: inline-block;
+    }
+  }
+</style>
+
+<footer class="lwj-demo-footer">
+
+  <a href="#"
+    >Made with &hearts; by Rupesh Avhad</a
+  >
+
+  <div class="bottom-bar"></div>
+</footer>
+
+    
+  </body>
+</html>

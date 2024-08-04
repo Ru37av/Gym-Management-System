@@ -1,0 +1,238 @@
+<style>
+  h1,
+  form,
+  .message,
+  .logout {
+    margin: 0 auto;
+    max-width: 400px;
+    width: 90vw;
+  }
+
+  .logout {
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .avatar {
+    border-radius: 50%;  
+    height: 300px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    max-width: 100vw;
+    margin-left: 1rem;
+  }
+
+
+  label,
+  button {
+    display: block;
+    font-size: 1rem;
+    font-variant: small-caps;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+  }
+
+  label {
+    margin: 0.5rem 0 0;
+    text-transform: lowercase;
+  }
+
+  input {
+    border: 1px solid var(--text-muted);
+    border-radius: 0.25rem;
+    display: block;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+  }
+
+  button {
+    cursor: pointer;
+    background: var(--pink);
+    border: 0;
+    border-radius: 0.25rem;
+    color: var(--white);
+    font-family: var(--font-family);
+    margin: 1rem 0 0;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+  }
+
+  .message {
+    background: var(--yellow);
+    border-radius: 0.25rem;
+    font-family: monospace;
+    padding: 1rem;
+  }
+
+  .message:empty {
+    display: none;
+  }
+  
+  img {
+      border-radius: 50%;
+      height: 95%;
+      width: 101%;
+      margin-left: 2rem;
+  }  
+  
+  .tac {
+    text-align: center;
+  }
+  
+  @media (min-width: 770px) {
+    .avatar {
+      margin-left: 55px;
+    }
+    
+    img {
+      width: 110%;
+    }
+  }  
+
+  
+</style>
+
+<div class="message"></div>
+
+<script
+  type="text/javascript"
+  src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+></script>
+
+<script>
+  const main = document.querySelector('main');
+  main.style.opacity = 'unset';    
+  let defaultImage = "https://thumbs.dreamstime.com/b/isolated-gym-man-muscle-icon-flat-design-man-muscle-icon-design-gym-healthy-lifestyle-fitness-bodybuilding-bodycare-activity-164689342.jpg";
+  const urlParams = new URLSearchParams(window.location.search);			    
+  const id = urlParams.get('id');
+  let fileChoosen = false;
+  let returnedImage = '';
+  
+  function handleIdentityEvent(user) {
+    if (user && user.token) {
+				const { access_token } = user.token;
+				fetch(`/.netlify/functions/member-by-id?id=${id}`, {
+					method: 'GET',
+					headers: {
+						Authorization: `Bearer ${access_token}`,
+					}
+				}).then(async (response) => {
+					if(response.status === 200) {
+							const result = await response.json();
+							const [ member ] = result.members;
+							const element = document.createElement('div');
+							element.innerHTML = addFragment(member); 
+							defaultImage = member.image_url;
+							returnedImage = defaultImage;
+							const message = document.querySelector('.message');
+							document.querySelector('#loading').remove();
+							message.parentNode.insertBefore(element, message);
+							const form = document.querySelector('form');
+							form.addEventListener('submit', handleSubmit);
+					} else {
+							document.querySelector(
+								'.message',
+							).innerText = `Response: ${response.status} — ${response.statusText}`;            
+					}
+				});
+    
+      return;
+    }
+
+    window.location.pathname = '/login/';
+  }
+
+  netlifyIdentity.on('init', handleIdentityEvent);
+  
+  async function handleSubmit(event) {
+    event.preventDefault();
+    
+    if(fileChoosen && defaultImage == returnedImage) {
+        alert("please try again..");
+        return;
+    }
+    
+    const { access_token } = netlifyIdentity.currentUser().token;
+    const data = new FormData(event.target);
+
+    const result = await fetch(`/.netlify/functions/put-by-id?id=${id}`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+      body: JSON.stringify({
+        name: data.get('name'),
+        mobile: data.get('mobile'),
+        address: data.get('address'),
+        image_url: defaultImage,
+        pending_fee: data.get('fees')
+      }),
+    }).then(async (response) => {
+      if(response.status === 200) {
+          const res = await response.json();
+          alert("Profile successfully updated");
+          const [ member ] = res.update_members.returning;
+          window.location = `/profile?id=${member.id}`    
+      } else {
+        document.querySelector(
+          '.message',
+        ).innerText = `Response: ${response.status} — ${response.statusText}`;      
+      }
+    });
+  }
+
+  function uploadFile(e) {
+          const file = document.querySelector('#file').files[0];
+          const imagePreview = URL.createObjectURL(file);
+          const image = document.querySelector("img[id='avatar']");
+          image.src = imagePreview;
+          fileChoosen = true;
+          
+          const formData = new FormData();
+          formData.append("file", file);
+          formData.append("upload_preset", "epass_upload_preset");
+    
+                
+          fetch("https://api.cloudinary.com/v1_1/epass/image/upload", {
+            method: 'POST',
+            body: formData
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.secure_url !== '') {
+                  defaultImage =  data.secure_url;
+              }
+            })
+            .catch(err => console.error(err))
+    }    
+  
+
+  function addFragment(member) {
+    const { name, mobile, address, image_url, pending_fee } = member;
+    return `<h1 id="tac" style="text-align: center;">Edit Profile</h1>
+        <form id="edit-profile">
+          <div class="avatar">
+            <img id="avatar"
+                 src="${image_url}"
+                 alt="avatar">
+          </div>  
+          <label for="name">Name <input type="text" id="name" name="name" value="${name}" required/></label>
+          <label for="mobile"
+            >Mobile Number <input type="text" id="mobile" name="mobile" value="${mobile}" required
+          /></label>
+          <label for="address"
+            >Address <input type="text" id="address" name="address" value="${address}" required
+          /></label>  
+          <label for="fees"
+            >Pending Fee <input type="text" id="fees" name="fees" value="${pending_fee}" required
+          /></label>  
+          <label for="file"
+            >Upload Photo  <input id="file" name="file" onchange="uploadFile()" type="file"/>
+          </label>
+          <button type="submit">Update Member Profile</button>
+        </form>`
+  }
+</script>

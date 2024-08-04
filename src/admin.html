@@ -1,0 +1,116 @@
+<style>
+    
+  h1,
+  form,
+  .message,
+  .logout {
+    margin: 0 0;
+    max-width: 300px;
+  }
+
+  .logout {
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  label,
+  button {
+    display: block;
+    font-size: 1rem;
+    font-variant: small-caps;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+  }
+
+  label {
+    margin: 0.5rem 0 0;
+    text-transform: lowercase;
+  }
+
+  input {
+    border: 1px solid var(--text-muted);
+    border-radius: 0.25rem;
+    display: block;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+  }
+
+  button {
+    background: var(--pink);
+    border: 0;
+    border-radius: 0.25rem;
+    color: var(--white);
+    font-family: var(--font-family);
+    margin: 1rem 0 0;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+  }
+
+  .message {
+    background: var(--yellow);
+    border-radius: 0.25rem;
+    font-family: monospace;
+    padding: 1rem;
+  }
+
+  .message:empty {
+    display: none;
+  }
+  
+  h1 {
+    margin-bottom: 1rem;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+</style>
+
+<h1>Welcome, Sagar</h1>
+
+<div class="message">
+  <a href="/new-member">
+    <button type="submit">Add New Member</button>
+  </a>
+  <a href="/members">
+    <button type="submit">List All Members</button>
+  </a>
+  <a href="/notifications">
+    <button type="submit">Notifications</button>
+  </a>
+  <a href="/about">
+    <button type="submit">About</button>
+  </a>
+  <button type="submit" id="logout">Logout</button>
+  
+</div>
+
+
+
+<script
+  type="text/javascript"
+  src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+></script>
+
+<script>
+    function handleIdentityEvent(user) {
+      if (user && user.token) {
+        const main = document.querySelector('main');
+        document.querySelector('#loading').remove();
+        main.style.opacity = 'unset';
+        return;
+      }
+  
+      window.location.pathname = '/login/';
+    }
+  
+    netlifyIdentity.on('init', handleIdentityEvent);
+    netlifyIdentity.on('logout', handleIdentityEvent);
+    document.querySelector('#logout').addEventListener('click', (event) => {
+      event.preventDefault();
+      netlifyIdentity.logout();
+    });
+</script>

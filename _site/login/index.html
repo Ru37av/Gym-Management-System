@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morwadi Health Club</title>
+    <link rel="stylesheet" href="https://use.typekit.net/jwa3agu.css" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="icon" type="image/x-icon" href="/images/morwadi-health-club.svg">
+        
+    <style>
+         main {
+            opacity: 0;
+         }
+         
+         #loading {
+             width: 8rem;
+             height: 11rem;
+             margin-left: 40%;
+         }
+    </style>
+  </head>
+  <body>
+    <style>
+
+  body {
+    overflow: none;
+  }
+  .lwj-demo-header {
+    background: var(--black);
+    font-family: var(--font-family);
+    position: relative;
+  }
+
+  .lwj-demo-header .logo-wrapper {
+    align-items: center;
+    display: flex;
+    height: 56px;
+    justify-content: flex-start;
+    padding: 0 1rem;
+    position: relative;
+    width: 100vw;
+  }
+
+  .lwj-demo-header .logo-wrapper::after {
+    background-image: linear-gradient(
+      255deg,
+      var(--black) 0%,
+      var(--black-transparent) 30%
+    );
+    bottom: 0;
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    z-index: 10;
+  }
+
+  .lwj-demo-header .logo {
+    display: block;
+    height: auto;
+    position: relative;
+    transform: rotate(-3deg);
+    transition: transform 250ms ease-out;
+    width: 55px;
+    z-index: 15;
+  }
+
+  .lwj-demo-header .logo::after {
+    background: var(--white);
+    border: 1px solid var(--dark-gray);
+    border-radius: 0.25rem;
+    color: var(--dark-gray);
+    content: 'Morwadi Health Club';
+    display: block;
+    left: -0.5rem;
+    opacity: 0;
+    padding: 0.5rem;
+    position: absolute;
+    text-align: center;
+    top: 98%;
+    transition: opacity 300ms linear;
+    width: 230px;
+  }
+
+  .lwj-demo-header .logo:active,
+  .lwj-demo-header .logo:focus,
+  .lwj-demo-header .logo:hover {
+    transform: rotate(0deg);
+  }
+
+  .lwj-demo-header .logo:active::after,
+  .lwj-demo-header .logo:focus::after,
+  .lwj-demo-header .logo:hover::after {
+    opacity: 1;
+  }
+
+  .lwj-demo-header .logo img {
+    display: block;
+    width: 100%;
+  }
+
+  .lwj-demo-header .home-link {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 900;
+    margin-left: 0.75rem;
+    position: relative;
+    text-decoration: none;
+    z-index: 15;
+  }
+
+  .lwj-demo-header #canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .lwj-demo-header .top-bar {
+    animation: gradient-roll 20s linear infinite alternate;
+    background-image: var(--lwj-gradient);
+    background-size: 200%;
+    border-bottom: 0.5px solid var(--light-gray);
+    height: 9px;
+    position: relative;
+    top: 100%;
+    width: 100vw;
+    z-index: 5;
+  }
+
+  .lwj-demo-header .top-bar::before,
+  .lwj-demo-header .top-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100vw;
+  }
+
+  .lwj-demo-header .top-bar::before {
+    bottom: 1px;
+    height: 0.5px;
+    background-color: var(--light-gray);
+  }
+
+  .lwj-demo-header .top-bar::after {
+    bottom: 0;
+    height: 1px;
+    background-color: var(--black);
+  }
+  
+  
+</style>
+
+<header class="lwj-demo-header">
+  <div class="logo-wrapper">
+    <canvas id="canvas" width="300" height="56"></canvas>
+    <a href="#" class="logo"
+       
+      ><img src="/images/morwadi-health-club.svg" alt="Morwadi Health Club"
+    /></a>
+    <a href="/" rel="home" class="home-link">
+      Morwadi Health Club
+    </a>
+  </div>
+
+  <div class="top-bar"></div>
+</header>
+
+<script type="module">
+  import { startAnimation } from '/js/dots.js';
+
+  startAnimation();
+</script>
+
+    <main>
+<svg id="loading" version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+      <circle fill="orange" stroke="none" cx="6" cy="50" r="6">
+        <animateTransform 
+           attributeName="transform" 
+           dur="1s" 
+           type="translate" 
+           values="0 15 ; 0 -15; 0 15" 
+           repeatCount="indefinite" 
+           begin="0.1"/>
+      </circle>
+      <circle fill="orange" stroke="none" cx="30" cy="50" r="6">
+        <animateTransform 
+           attributeName="transform" 
+           dur="1s" 
+           type="translate" 
+           values="0 10 ; 0 -10; 0 10" 
+           repeatCount="indefinite" 
+           begin="0.2"/>
+      </circle>
+      <circle fill="orange" stroke="none" cx="54" cy="50" r="6">
+        <animateTransform 
+           attributeName="transform" 
+           dur="1s" 
+           type="translate" 
+           values="0 5 ; 0 -5; 0 5" 
+           repeatCount="indefinite" 
+           begin="0.3"/>
+      </circle>
+    </svg>    
+      <style>
+  .netlify-identity-button {
+    cursor: pointer;
+    background: var(--pink);
+    border: 0;
+    border-radius: 0.25rem;
+    color: var(--white);
+    display: block;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 300px;
+  }
+  
+  .data-netlify-identity-button {
+    opacity: 0;
+  }
+  
+  #hide {
+    opacity: 0;
+  }
+  
+  
+  .callOut, .netlifyLogo {
+      display: none !important; 
+  }  
+  
+  .callOut .netlifyLogo {
+      display: none !important;
+  }
+
+.icon-wrapper {
+  width: 200px;
+  height: 200px;
+  background: orange;
+  padding: 2.5em;
+  margin: 2em auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+}
+
+.cls-1 {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+}
+@keyframes shake {
+  10% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(0, -15px, 0);
+  }
+  30% {
+    transform: translate3d(-1px, -30px, 0);
+  }
+  40% {
+    transform: translate3d(0px, -45px, 0);
+  }
+  50% {
+    transform: translate3d(1px, -60px, 0);
+  }
+  60% {
+    transform: translate3d(0px, -65px, 0);
+  }
+  70% {
+    transform: translate3d(-2px, -72px, 0);
+  }
+  74% {
+    transform: translate3d(3px, -74px, 0);
+  }
+  79% {
+    transform: translate3d(-3px, -78px, 0);
+  }
+  83% {
+    transform: translate3d(2px, -79px, 0);
+  }
+  86% {
+    transform: translate3d(-2px, -80px, 0);
+  }
+  89% {
+    transform: translate3d(2px, -80px, 0);
+  }
+  92% {
+    transform: translate3d(-2px, -82px, 0);
+  }
+  94% {
+    transform: translate3d(0px, -80px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  
+}
+
+.icon-wrapper:hover #crossfit-icon {
+  animation: 1.25s shake ease-in infinite;
+}
+
+
+</style>
+
+<div id="container"></div>
+
+<div class="icon-wrapper">
+  <svg id="crossfit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <title>Morwadi Health Club</title>
+    <path class="cls-1" d="M35.87,32.58c3.89,0,7.12,4.13,8.45,10.62M35.87,67.31c4.09,0,7.45-4.47,8.63-11.47" />
+    <path class="cls-1" d="M55.55,55.39h-.13" />
+    <path class="cls-1" d="M35.87,32.58c3.89,0,7.12,4.13,8.45,10.62M35.87,67.31c4.09,0,7.45-4.47,8.63-11.47" />
+    <path class="cls-1" d="M35.87,67.31h-12c-5.06,0-9.17-7.78-9.17-17.37s4.11-17.36,9.17-17.36h12c-5.07,0-9.17,7.77-9.17,17.36S30.8,67.31,35.87,67.31Z" />
+    <path class="cls-1" d="M76.16,67.31h-12c-4.06,0-7.5-5-8.71-11.92a32.32,32.32,0,0,1,.13-11.58c1.31-6.56,4.66-11.23,8.58-11.23h12c-5.07,0-9.17,7.77-9.17,17.36S71.09,67.31,76.16,67.31Z" />
+    <path class="cls-1" d="M85.33,49.94c0,9.59-4.11,17.37-9.17,17.37S67,59.53,67,49.94s4.1-17.36,9.17-17.36S85.33,40.35,85.33,49.94Z" />
+    <path class="cls-1" d="M55.55,55.39h-.13" />
+    <path class="cls-1" d="M55,49.94a31.71,31.71,0,0,0,.46,5.45H35.87c-1.69,0-3.06-2.59-3.06-5.79s1.37-5.79,3.06-5.79H55.55A31.48,31.48,0,0,0,55,49.94Z" />
+
+</svg>
+</div>
+<h1>Morwadi Health Club</h1>
+<div data-netlify-identity-button id="hide"></div>
+
+<script
+    type="text/javascript"
+    src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+></script>
+
+<script>
+  const main = document.querySelector('main');
+  main.style.opacity = 'unset';
+  document.querySelector('#loading').remove();      
+  
+  function handleLogin(user) {
+    if (!user || !user.token) {
+      const identityBtn = document.querySelector("#hide"); 
+      identityBtn.style.opacity = 'unset';
+      return;
+    }
+    // if we get here, we have an active user; redirect to the admin page!
+    window.location.pathname = '/admin/';
+  }
+
+  window.netlifyIdentity.on('init', handleLogin);
+  window.netlifyIdentity.on('login', handleLogin);
+
+</script>
+
+
+    </main>
+
+    <style>
+  .lwj-demo-footer {
+    background: var(--black);
+    color: var(--light-gray);
+    font-family: var(--font-family);
+    padding: 1rem 5vw;
+    position: relative;
+    text-align: center;
+  }
+
+  .lwj-demo-footer a {
+    color: inherit;
+    display: block;
+    font-size: 0.75rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    text-decoration: none;
+  }
+
+  .lwj-demo-footer a:active,
+  .lwj-demo-footer a:focus,
+  .lwj-demo-footer a:hover {
+    color: var(--pink-text);
+  }
+
+  .lwj-demo-footer .bottom-bar {
+    animation: gradient-roll 20s linear infinite alternate;
+    background-image: var(--lwj-gradient);
+    background-size: 200%;
+    border-bottom: 0.5px solid var(--light-gray);
+    bottom: 100%;
+    height: 6px;
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    z-index: 5;
+  }
+
+  .lwj-demo-footer .bottom-bar::before,
+  .lwj-demo-footer .bottom-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100vw;
+  }
+
+  .lwj-demo-footer .bottom-bar::before {
+    top: 1px;
+    height: 0.5px;
+    background-color: var(--light-gray);
+  }
+
+  .lwj-demo-footer .bottom-bar::after {
+    top: 0;
+    height: 1px;
+    background-color: var(--black);
+  }
+
+  @media (min-width: 770px) {
+    .lwj-demo-footer {
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+
+    .lwj-demo-footer a {
+      display: inline-block;
+    }
+  }
+</style>
+
+<footer class="lwj-demo-footer">
+
+  <a href="#"
+    >Made with &hearts; by Rupesh Avhad</a
+  >
+
+  <div class="bottom-bar"></div>
+</footer>
+
+    
+  </body>
+</html>

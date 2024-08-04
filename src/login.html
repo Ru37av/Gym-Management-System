@@ -1,0 +1,158 @@
+<style>
+  .netlify-identity-button {
+    cursor: pointer;
+    background: var(--pink);
+    border: 0;
+    border-radius: 0.25rem;
+    color: var(--white);
+    display: block;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 300px;
+  }
+  
+  .data-netlify-identity-button {
+    opacity: 0;
+  }
+  
+  #hide {
+    opacity: 0;
+  }
+  
+  
+  .callOut, .netlifyLogo {
+      display: none !important; 
+  }  
+  
+  .callOut .netlifyLogo {
+      display: none !important;
+  }
+
+.icon-wrapper {
+  width: 200px;
+  height: 200px;
+  background: orange;
+  padding: 2.5em;
+  margin: 2em auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+}
+
+.cls-1 {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+}
+@keyframes shake {
+  10% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(0, -15px, 0);
+  }
+  30% {
+    transform: translate3d(-1px, -30px, 0);
+  }
+  40% {
+    transform: translate3d(0px, -45px, 0);
+  }
+  50% {
+    transform: translate3d(1px, -60px, 0);
+  }
+  60% {
+    transform: translate3d(0px, -65px, 0);
+  }
+  70% {
+    transform: translate3d(-2px, -72px, 0);
+  }
+  74% {
+    transform: translate3d(3px, -74px, 0);
+  }
+  79% {
+    transform: translate3d(-3px, -78px, 0);
+  }
+  83% {
+    transform: translate3d(2px, -79px, 0);
+  }
+  86% {
+    transform: translate3d(-2px, -80px, 0);
+  }
+  89% {
+    transform: translate3d(2px, -80px, 0);
+  }
+  92% {
+    transform: translate3d(-2px, -82px, 0);
+  }
+  94% {
+    transform: translate3d(0px, -80px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  
+}
+
+.icon-wrapper:hover #crossfit-icon {
+  animation: 1.25s shake ease-in infinite;
+}
+
+
+</style>
+
+<div id="container"></div>
+
+<div class="icon-wrapper">
+  <svg id="crossfit-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <title>Morwadi Health Club</title>
+    <path class="cls-1" d="M35.87,32.58c3.89,0,7.12,4.13,8.45,10.62M35.87,67.31c4.09,0,7.45-4.47,8.63-11.47" />
+    <path class="cls-1" d="M55.55,55.39h-.13" />
+    <path class="cls-1" d="M35.87,32.58c3.89,0,7.12,4.13,8.45,10.62M35.87,67.31c4.09,0,7.45-4.47,8.63-11.47" />
+    <path class="cls-1" d="M35.87,67.31h-12c-5.06,0-9.17-7.78-9.17-17.37s4.11-17.36,9.17-17.36h12c-5.07,0-9.17,7.77-9.17,17.36S30.8,67.31,35.87,67.31Z" />
+    <path class="cls-1" d="M76.16,67.31h-12c-4.06,0-7.5-5-8.71-11.92a32.32,32.32,0,0,1,.13-11.58c1.31-6.56,4.66-11.23,8.58-11.23h12c-5.07,0-9.17,7.77-9.17,17.36S71.09,67.31,76.16,67.31Z" />
+    <path class="cls-1" d="M85.33,49.94c0,9.59-4.11,17.37-9.17,17.37S67,59.53,67,49.94s4.1-17.36,9.17-17.36S85.33,40.35,85.33,49.94Z" />
+    <path class="cls-1" d="M55.55,55.39h-.13" />
+    <path class="cls-1" d="M55,49.94a31.71,31.71,0,0,0,.46,5.45H35.87c-1.69,0-3.06-2.59-3.06-5.79s1.37-5.79,3.06-5.79H55.55A31.48,31.48,0,0,0,55,49.94Z" />
+
+</svg>
+</div>
+<h1>Morwadi Health Club</h1>
+<div data-netlify-identity-button id="hide"></div>
+
+<script
+    type="text/javascript"
+    src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+></script>
+
+<script>
+  const main = document.querySelector('main');
+  main.style.opacity = 'unset';
+  document.querySelector('#loading').remove();      
+  
+  function handleLogin(user) {
+    if (!user || !user.token) {
+      const identityBtn = document.querySelector("#hide"); 
+      identityBtn.style.opacity = 'unset';
+      return;
+    }
+    // if we get here, we have an active user; redirect to the admin page!
+    window.location.pathname = '/admin/';
+  }
+
+  window.netlifyIdentity.on('init', handleLogin);
+  window.netlifyIdentity.on('login', handleLogin);
+
+</script>
+
